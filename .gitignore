@@ -1,0 +1,6 @@
+# Vim
+*.swp
+
+# Secret / private files
+secrets/
+parameters

@@ -1,0 +1,14 @@
+[req]
+req_extensions = v3_req
+distinguished_name = req_distinguished_name
+[req_distinguished_name]
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = kubernetes
+DNS.2 = kubernetes.default
+DNS.3 = ${IFR_MASTER_FQDN_00}
+IP.1 = ${IFR_NETWORK_K8S_SERVICE_IP}
+IP.2 = ${IFR_NETWORK_MASTER_PRIV_IP_00}

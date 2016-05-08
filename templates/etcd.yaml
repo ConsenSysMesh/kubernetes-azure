@@ -1,0 +1,9 @@
+#cloud-config
+
+coreos:
+  etcd2:
+    advertise-client-urls: http://${IFR_NETWORK_ETCD_PRIV_IP_00}:2379
+    listen-client-urls: http://0.0.0.0:2379
+  units:
+    - name: etcd2.service
+      command: start
