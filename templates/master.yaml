@@ -319,8 +319,7 @@ coreos:
          --cadvisor-port=0 \
          --config=/etc/kubernetes/manifests \
          --cluster-dns=${IFR_NETWORK_DNS_SERVICE_IP} \
-         --cluster_domain=cluster.local \
-         --hostname-override=$private_ipv4
+         --cluster_domain=cluster.local
         Restart=on-failure
         RestartSec=5
 

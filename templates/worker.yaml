@@ -180,7 +180,6 @@ coreos:
           --cluster-dns=${IFR_NETWORK_DNS_SERVICE_IP} \
           --cluster_domain=cluster.local \
           --config=/etc/kubernetes/manifests \
-          --hostname-override=$private_ipv4 \
           --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml \
           --register-node=true \
           --tls-cert-file=/etc/kubernetes/ssl/worker.pem \
