@@ -10,7 +10,7 @@ for a kubernetes cluster.
 
 ## Read the docs!
 
-* Network Topology of this cluster
+* [Network Topology of this cluster](docs/network_topology.md)
 * Preparing the parameters file
 * Preparing your SSL Assets
 * Deploying ETCD
