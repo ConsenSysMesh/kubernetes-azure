@@ -21,8 +21,8 @@ by flannels using a virtual network overlay.
 
 ### Virtual Subnets
 
-* `10.42.3.0/24`: Kubernetes Services Subnet
-* `10.42.4.0/24`: Kubernetes Pods Subnet
+* `10.42.16.0/20`: Kubernetes Services Subnet
+* `10.42.128.0/17`: Kubernetes Pods Subnet
 
 ## Private IP Addresses
 
@@ -32,8 +32,8 @@ these values during the provision of the machines.
 * `10.42.0.4`: ETCD Server
 * `10.42.1.4`: Master Server
 * `10.42.2.4`: Worker Server
-* `10.42.3.1`: Kubernetes Service
-* `10.42.3.10`: DNS Service
+* `10.42.16.1`: Kubernetes Service
+* `10.42.16.10`: DNS Service
 
 Please note that for the _physical_ nodes, our first IP starts at `4`. This is
 due to the fact that Azure reserves the first three IPs on each subnet.
