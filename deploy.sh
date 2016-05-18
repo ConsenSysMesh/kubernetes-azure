@@ -73,7 +73,7 @@ kubectl config use-context default-system
 until kubectl get nodes 2>/dev/null; do printf '.'; sleep 5; done
 
 ## Label master
-kubectl label nodes ${IFR_NETWORK_MASTER_PRIV_IP_00} role=master
+kubectl label nodes ${IFR_PREFIX}-master-vm-00 role=master
 
 ## Create kube-system namespace in kubernetes
 NAMESPACE=`eval "kubectl get namespaces | grep kube-system | cat"`
