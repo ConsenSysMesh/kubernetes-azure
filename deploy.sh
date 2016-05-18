@@ -99,6 +99,3 @@ create_vm "${IFR_PREFIX}-worker-vm-00" "${IFR_PREFIX}-worker-sn" \
     "${IFR_PREFIX}-worker-00" "${IFR_PREFIX}-worker-nic-00" \
     "${IFR_WORKER_SSH_PUB_FILEPATH}" "${IFR_WORKER_TEMPLATE_RENDERED}" \
     "Standard_A1"
-
-## Label this node
-kubectl label nodes ${IFR_NETWORK_WORKER_PRIV_IP_00} role=pre-ipfs

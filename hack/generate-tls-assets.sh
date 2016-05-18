@@ -7,14 +7,14 @@
 # Usage:
 #
 # source ./parameters.sh
-# ./hack/generate-tls-assets <MASTER_HOST_FQDN>
+# ./hack/generate-tls-assets.sh
 #
 # Will output in secrets your TLS assets
 #
 ###############################################################################
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-SECRETS_DIR=$CURRENT_DIR/../secrets
+SECRETS_DIR=$CURRENT_DIR/../secrets/k8s
 
 openssl genrsa -out $SECRETS_DIR/ca-key.pem 2048
 openssl req -x509 -new -nodes -key $SECRETS_DIR/ca-key.pem -days 10000 -out $SECRETS_DIR/ca.pem -subj "/CN=kube-ca"
@@ -34,3 +34,7 @@ openssl x509 -req -in $SECRETS_DIR/worker.csr -CA $SECRETS_DIR/ca.pem -CAkey $SE
 openssl genrsa -out $SECRETS_DIR/admin-key.pem 2048
 openssl req -new -key $SECRETS_DIR/admin-key.pem -out $SECRETS_DIR/admin.csr -subj "/CN=kube-admin"
 openssl x509 -req -in $SECRETS_DIR/admin.csr -CA $SECRETS_DIR/ca.pem -CAkey $SECRETS_DIR/ca-key.pem -CAcreateserial -out $SECRETS_DIR/admin.pem -days 365
+
+# Cleanup
+rm $SECRETS_DIR/*.csr
+rm $SECRETS_DIR/openssl.cnf

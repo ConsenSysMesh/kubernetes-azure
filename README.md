@@ -11,7 +11,7 @@ for a kubernetes cluster.
 ## Read the docs!
 
 * [Network Topology of this cluster](docs/network_topology.md)
-* Preparing the parameters file
+* [Preparing the parameters file](docs/parameters_file.md)
 * Preparing your SSL Assets
 * Deploying ETCD
 * Deploying Master

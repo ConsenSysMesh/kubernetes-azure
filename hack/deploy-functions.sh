@@ -169,9 +169,9 @@ function render_etcd_template()
 
 function render_master_template()
 {
-    CA_PEM=$(cat $CURRENT_DIR/secrets/ca.pem | base64 | while read line; do echo -n "$line"; done;)
-    APISERVER_PEM=$(cat $CURRENT_DIR/secrets/apiserver.pem | base64 | while read line; do echo -n "$line"; done;)
-    APISERVER_KEY_PEM=$(cat $CURRENT_DIR/secrets/apiserver-key.pem | base64 | while read line; do echo -n "$line"; done;)
+    CA_PEM=$(cat $CURRENT_DIR/secrets/k8s/ca.pem | base64 | while read line; do echo -n "$line"; done;)
+    APISERVER_PEM=$(cat $CURRENT_DIR/secrets/k8s/apiserver.pem | base64 | while read line; do echo -n "$line"; done;)
+    APISERVER_KEY_PEM=$(cat $CURRENT_DIR/secrets/k8s/apiserver-key.pem | base64 | while read line; do echo -n "$line"; done;)
 
     sed -e "s/\${MASTER_CA_PEM_CONTENTS_BASE64}/$CA_PEM/g" < ${IFR_MASTER_TEMPLATE} > ${IFR_MASTER_TEMPLATE_RENDERED}
     sed -i "s/\${MASTER_APISERVER_PEM_CONTENTS_BASE64}/$APISERVER_PEM/g" ${IFR_MASTER_TEMPLATE_RENDERED}
@@ -184,9 +184,9 @@ function render_master_template()
 
 function render_worker_template()
 {
-    CA_PEM=$(cat $CURRENT_DIR/secrets/ca.pem | base64 | while read line; do echo -n "$line"; done;)
-    WORKER_PEM=$(cat $CURRENT_DIR/secrets/worker.pem | base64 | while read line; do echo -n "$line"; done;)
-    WORKER_KEY_PEM=$(cat $CURRENT_DIR/secrets/worker-key.pem | base64 | while read line; do echo -n "$line"; done;)
+    CA_PEM=$(cat $CURRENT_DIR/secrets/k8s/ca.pem | base64 | while read line; do echo -n "$line"; done;)
+    WORKER_PEM=$(cat $CURRENT_DIR/secrets/k8s/worker.pem | base64 | while read line; do echo -n "$line"; done;)
+    WORKER_KEY_PEM=$(cat $CURRENT_DIR/secrets/k8s/worker-key.pem | base64 | while read line; do echo -n "$line"; done;)
 
     sed -e "s/\${WORKER_CA_PEM_CONTENTS_BASE64}/$CA_PEM/" < ${IFR_WORKER_TEMPLATE} > ${IFR_WORKER_TEMPLATE_RENDERED}
     sed -i "s/\${WORKER_WORKER_PEM_CONTENTS_BASE64}/$WORKER_PEM/" ${IFR_WORKER_TEMPLATE_RENDERED}
