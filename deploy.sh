@@ -91,11 +91,18 @@ create_subnet "${IFR_PREFIX}-worker-sn" "${IFR_NETWORK_WORKER_CIDR}"
 create_network_security_group "${IFR_PREFIX}-worker-nsg"
 link_subnet_to_nsg "${IFR_PREFIX}-worker-sn" "${IFR_PREFIX}-worker-nsg"
 
-## Machine
-create_nic "${IFR_PREFIX}-worker-nic-00" "${IFR_PREFIX}-worker-sn" \
-    "${IFR_NETWORK_WORKER_PRIV_IP_00}"
+## Machines
 render_worker_template
-create_vm "${IFR_PREFIX}-worker-vm-00" "${IFR_PREFIX}-worker-sn" \
-    "${IFR_PREFIX}-worker-00" "${IFR_PREFIX}-worker-nic-00" \
-    "${IFR_WORKER_SSH_PUB_FILEPATH}" "${IFR_WORKER_TEMPLATE_RENDERED}" \
-    "Standard_A1"
+
+baseIP="$(echo ${IFR_NETWORK_WORKER_PRIV_IP_00} | cut -d. -f1-3)"
+lsv="$(echo ${IFR_NETWORK_WORKER_PRIV_IP_00} | cut -d. -f4)"
+
+for i in 0 1 2
+do
+    create_nic "${IFR_PREFIX}-worker-nic-0$i" "${IFR_PREFIX}-worker-sn" \
+        "$baseIP.$(( $lsv + $i ))"
+    create_vm "${IFR_PREFIX}-worker-vm-0$i" "${IFR_PREFIX}-worker-sn" \
+        "${IFR_PREFIX}-worker-0$i" "${IFR_PREFIX}-worker-nic-0$i" \
+        "${IFR_WORKER_SSH_PUB_FILEPATH}" "${IFR_WORKER_TEMPLATE_RENDERED}" \
+        "Standard_A0"
+done
