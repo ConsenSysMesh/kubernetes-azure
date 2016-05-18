@@ -52,7 +52,8 @@ function create_storage_account()
     $AZURE_CMD storage account create ${IFR_STORAGE_ACC_NAME} \
     --resource-group "${IFR_PREFIX}" \
     --location "${IFR_LOCATION}" \
-    --type "LRS"
+    --sku-name "LRS" \
+    --kind "Storage"
 }
 
 ################################################################################
