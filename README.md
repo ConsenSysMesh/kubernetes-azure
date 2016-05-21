@@ -12,7 +12,7 @@ for a kubernetes cluster.
 
 * [Network Topology of this cluster](docs/network_topology.md)
 * [Preparing the parameters file](docs/parameters_file.md)
-* Preparing your SSL Assets
+* [Preparing your SSL Assets](docs/preparing_ssl_assets.md)
 * Deploying ETCD
 * Deploying Master
 * Configure kubectl
