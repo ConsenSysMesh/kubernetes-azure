@@ -13,9 +13,9 @@ for a kubernetes cluster.
 * [Network Topology of this cluster](docs/network_topology.md)
 * [Preparing the parameters file](docs/parameters_file.md)
 * [Preparing your SSL Assets](docs/preparing_ssl_assets.md)
-* Deploying ETCD
-* Deploying Master
-* Configure kubectl
-* Deploying the Workers
-* Deploying the DNS Add-on
-* Testing the Cluster
+* [Deploying ETCD](docs/deploying_etcd.md)
+* [Deploying Master](docs/deploying_master.md)
+* [Configure kubectl](docs/configuring_kubectl.md)
+* [Deploying the Workers](docs/deploying_workers.md)
+* [Deploying the DNS Add-on](docs/deploying_dns_add_on.md)
+* [Testing the Cluster](docs/testing_your_cluster.md)
